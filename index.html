@@ -1,0 +1,2344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bowling Scoring Application</title>
+
+    <!-- Added link to the jQuery Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Added a link to Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- Added a link to external stylesheet-->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="jumbotron">
+        <h1 class="text-center header">Bowling Scoring Application</h1>
+        <h3 class="text-center subheader">Score Your Bowling Game!</h3>
+    </div>
+
+    <div class="container">
+
+        <div class="row">
+
+
+            <div class="col-lg-12">
+                <!-- <div class="card"> -->
+                    <h3 class="text-center mb-3">Click Number of Pins Knocked Down:</h3>
+
+                    <div class="text-center">
+                        <button id="button-0" class="btn btn-primary number" value="0"><span>0</span></button>
+                        <button id="button-1" class="btn btn-primary number" value="1"><span>1</span></button>
+                        <button id="button-2" class="btn btn-primary number" value="2"><span>2</span></button>
+                        <button id="button-3" class="btn btn-primary number" value="3"><span>3</span></button>
+                        <button id="button-4" class="btn btn-primary number" value="4"><span>4</span></button>
+                        <button id="button-5" class="btn btn-primary number" value="5"><span>5</span></button>
+                        <button id="button-6" class="btn btn-primary number" value="6"><span>6</span></button>
+                        <button id="button-7" class="btn btn-primary number" value="7"><span>7</span></button>
+                        <button id="button-8" class="btn btn-primary number" value="8"><span>8</span></button>
+                        <button id="button-9" class="btn btn-primary number" value="9"><span>9</span></button>
+                        <button id="button-9" class="btn btn-primary number" value="10"><span>10</span></button>
+
+                        <!-- <button id="button-clear" class="btn btn-dark clear" value="clear"><span>clear</span></button> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+
+                <div class="col-lg-12">
+
+
+                    <table>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                        <th>8</th>
+                        <th>9</th>
+                        <th>10</th>
+                        <th>Total</th>
+
+                        <tbody>
+
+                            <td class="">
+
+                                <div id="frameOneShotOne" class="shotOne"></div>
+                                <div id="frameOneShotTwo" class="shotTwo"></div>
+                                <div id="frameOneTotal" class="frameTotal"></div>
+
+                            </td>
+                            <td class="">
+                                <div id="frameTwoShotOne" class="shotOne"></div>
+                                <div id="frameTwoShotTwo" class="shotTwo"></div>
+                                <div id="frameTwoTotal" class="frameTotal"></div>
+
+                            </td>
+                            <td class="">
+
+                                <div id="frameThreeShotOne" class="shotOne"></div>
+                                <div id="frameThreeShotTwo" class="shotTwo"></div>
+                                <div id="frameThreeTotal" class="frameTotal"></div>
+
+
+                            </td>
+                            <td class="">
+
+                                <div id="frameFourShotOne" class="shotOne"></div>
+                                <div id="frameFourShotTwo" class="shotTwo"></div>
+                                <div id="frameFourTotal" class="frameTotal"></div>
+
+
+                            </td>
+                            <td class="">
+
+                                <div id="frameFiveShotOne" class="shotOne"></div>
+                                <div id="frameFiveShotTwo" class="shotTwo"></div>
+                                <div id="frameFiveTotal" class="frameTotal"></div>
+
+                            </td>
+                            <td class="">
+
+                                <div id="frameSixShotOne" class="shotOne"></div>
+                                <div id="frameSixShotTwo" class="shotTwo"></div>
+                                <div id="frameSixTotal" class="frameTotal"></div>
+                            </td>
+                            <td class="">
+
+                                <div id="frameSevenShotOne" class="shotOne"></div>
+                                <div id="frameSevenShotTwo" class="shotTwo"></div>
+                                <div id="frameSevenTotal" class="frameTotal"></div>
+
+                            </td>
+                            <td class="">
+                                <div id="frameEightShotOne" class="shotOne"></div>
+                                <div id="frameEightShotTwo" class="shotTwo"></div>
+                                <div id="frameEightTotal" class="frameTotal"></div>
+
+                            </td>
+                            <td class="">
+                                <div id="frameNineShotOne" class="shotOne"></div>
+                                <div id="frameNineShotTwo" class="shotTwo"></div>
+                                <div id="frameNineTotal" class="frameTotal"></div>
+
+                            </td>
+                            <td class="">
+                                <div id="frameTenShotOne" class="frameTenShotOne"></div>
+                                <div id="frameTenShotTwo" class="frameTenShotTwo"></div>
+                                <div id="frameTenShotThree" class="frameTenShotThree"></div>
+                                <div id="frameTenTotal" class="frameTotal"></div>
+
+
+                            </td>
+                            <td class="">
+                                <div id="gameTotal" class="gameTotal"></div>
+
+                            </td>
+
+
+                        </tbody>
+
+
+
+
+
+                    </table>
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+            </div>
+
+            <script type="text/javascript">
+
+                $(document).ready(function () {
+
+                    // Make variables global to the runtime of the application
+                    var frameOneShotOne = 0;
+                    var frameTwoShotOne = 0;
+                    var frameThreeShotOne = 0;
+                    var frameFourShotOne = 0;
+                    var frameFiveShotOne = 0;
+                    var frameSixShotOne = 0;
+                    var frameSevenShotOne = 0;
+                    var frameEightShotOne = 0;
+                    var frameNineShotOne = 0;
+                    var frameTenShotOne = 0;
+
+                    var frameOneShotTwo = 0;
+                    var frameTwoShotTwo = 0;
+                    var frameThreeShotTwo = 0;
+                    var frameFourShotTwo = 0;
+                    var frameFiveShotTwo = 0;
+                    var frameSixShotTwo = 0;
+                    var frameSevenShotTwo = 0;
+                    var frameEightShotTwo = 0;
+                    var frameNineShotTwo = 0;
+                    var frameTenShotTwo = 0;
+
+                    var frameTenShotThree = 0;
+
+                    var result = 0;
+
+                    var frameOneShotOneEntered = false;
+                    var frameTwoShotOneEntered = false;
+                    var frameThreeShotOneEntered = false;
+                    var frameFourShotOneEntered = false;
+                    var frameFiveShotOneEntered = false;
+                    var frameSixShotOneEntered = false;
+                    var frameSevenShotOneEntered = false;
+                    var frameEightShotOneEntered = false;
+                    var frameNineShotOneEntered = false;
+                    var frameTenShotOneEntered = false;
+
+                    var frameOneShotTwoEntered = false;
+                    var frameTwoShotTwoEntered = false;
+                    var frameThreeShotTwoEntered = false;
+                    var frameFourShotTwoEntered = false;
+                    var frameFiveShotTwoEntered = false;
+                    var frameSixShotTwoEntered = false;
+                    var frameSevenShotTwoEntered = false;
+                    var frameEightShotTwoEntered = false;
+                    var frameNineShotTwoEntered = false;
+                    var frameTenShotTwoEntered = false;
+
+                    var frameOneTotalEntered = false;
+                    var frameTwoTotalEntered = false;
+                    var frameThreeTotalEntered = false;
+                    var frameFourTotalEntered = false;
+                    var frameFiveTotalEntered = false;
+                    var frameSixTotalEntered = false;
+                    var frameSevenTotalEntered = false;
+                    var frameEightTotalEntered = false;
+                    var frameNineTotalEntered = false;
+                    var frameTenTotalEntered = false;
+
+                    var frameOneEmpty = true;
+                    var frameTwoEmpty = true;
+                    var frameThreeEmpty = true;
+                    var frameFourEmpty = true;
+                    var frameFiveEmpty = true;
+                    var frameSixEmpty = true;
+                    var frameSevenEmpty = true;
+                    var frameEightEmpty = true;
+                    var frameNineEmpty = true;
+                    var frameTenEmpty = true;
+
+                    var frameOneStrikeEntered = false;
+                    var frameTwoStrikeEntered = false;
+                    var frameThreeStrikeEntered = false;
+                    var frameFourStrikeEntered = false;
+                    var frameFiveStrikeEntered = false;
+                    var frameSixStrikeEntered = false;
+                    var frameSevenStrikeEntered = false;
+                    var frameEightStrikeEntered = false;
+                    var frameNineStrikeEntered = false;
+                    var frameTenStrikeEntered = false;
+
+                    var frameOneSpareEntered = false;
+                    var frameTwoSpareEntered = false;
+                    var frameThreeSpareEntered = false;
+                    var frameFourSpareEntered = false;
+                    var frameFiveSpareEntered = false;
+                    var frameSixSpareEntered = false;
+                    var frameSevenSpareEntered = false;
+                    var frameEightSpareEntered = false;
+                    var frameNineSpareEntered = false;
+                    var frameTenSpareEntered = false;
+
+
+
+
+
+                    $(".number").on("click", function () {
+
+
+                        if (frameOneEmpty === true && frameOneShotOneEntered === false) {
+
+                            frameOneShotOne = $(this).val();
+
+                            frameOneShotOne = parseInt(frameOneShotOne);
+
+                            if (frameOneShotOne === 10) {
+
+                                $("#frameOneShotOne").text("X");
+
+                                frameOneEmpty = false;
+
+                                frameOneStrikeEntered = true;
+
+                            } else {
+
+
+
+                                $("#frameOneShotOne").text(frameOneShotOne);
+
+                                frameOneEmpty = false;
+
+                                frameOneShotOneEntered = true;
+
+
+
+                            }
+
+                        }
+
+                        else if (frameOneShotTwoEntered === false && parseInt(frameOneShotOne) + parseInt($(this).val()) <= 10) {
+
+                            frameOneShotTwo = $(this).val();
+
+                            frameOneShotTwo = parseInt(frameOneShotTwo);
+
+                            if (frameOneShotOne + frameOneShotTwo === 10) {
+
+                                $("#frameOneShotTwo").text("/");
+
+                                frameOneSpareEntered = true;
+
+                                frameOneShotTwoEntered = true;
+
+                                frameOneTotalEntered = false;
+
+                            }
+                            else if (frameOneShotOne + frameOneShotTwo < 10) {
+
+                                $("#frameOneShotTwo").text(frameOneShotTwo);
+
+                                frameOneShotTwoEntered = true;
+
+                                result = frameOneShotOne + frameOneShotTwo;
+
+                                $("#frameOneTotal").text(result);
+
+                                frameOneTotalEntered = true;
+                            }
+
+                        } else if (frameTwoEmpty === true && frameTwoShotOneEntered === false && parseInt($(this).val()) < 10) {
+
+                            if (frameOneShotOne + frameOneShotTwo < 10 && frameOneShotOne < 10) {
+
+                                frameTwoShotOne = $(this).val();
+
+                                frameTwoShotOne = parseInt(frameTwoShotOne);
+
+                                $("#frameTwoShotOne").text(frameTwoShotOne);
+
+                                frameTwoEmpty = false;
+
+                                frameTwoShotOneEntered = true;
+
+
+
+                            } else if (frameOneShotOne + frameOneShotTwo === 10 && frameOneShotOne !== 10) {
+
+                                frameTwoShotOne = $(this).val();
+
+                                frameTwoShotOne = parseInt(frameTwoShotOne);
+
+                                $("#frameTwoShotOne").text(frameTwoShotOne);
+
+                                frameTwoEmpty = false;
+
+                                frameTwoShotOneEntered = true;
+
+                                result = 10 + frameTwoShotOne;
+
+                                $("#frameOneTotal").text(result);
+
+                                frameOneTotalEntered = true;
+
+
+                            }
+
+                            else if (frameOneShotOne + frameOneShotTwo === 10 && frameOneShotOne === 10) {
+
+                                frameTwoShotOne = $(this).val();
+
+                                frameTwoShotOne = parseInt(frameTwoShotOne);
+
+                                $("#frameTwoShotOne").text(frameTwoShotOne);
+
+                                frameTwoEmpty = false;
+
+                                frameTwoShotOneEntered = true;
+
+                                result = 0;
+
+
+                            }
+                        }
+
+                        else if (frameTwoEmpty === true && frameTwoShotOneEntered === false && parseInt($(this).val()) === 10) {
+
+                            frameTwoShotOne = $(this).val();
+
+                            frameTwoShotOne = parseInt(frameTwoShotOne);
+
+                            $("#frameTwoShotOne").text("X");
+
+                            frameTwoShotOneEntered = true;
+
+                            if (frameOneShotOne === 10 && frameOneShotOne + frameOneShotTwo === 10) {
+
+                                result = 0;
+
+
+                            }
+
+                            else if (frameOneShotOne !== 10 && frameOneShotOne + frameOneShotTwo === 10) {
+
+                                result = 20;
+
+                                $("#frameOneTotal").text(result);
+
+                            }
+
+                        }
+
+                        else if (frameTwoShotOneEntered === true && frameTwoEmpty === false && frameTwoShotTwoEntered === false && frameTwoShotOne + parseInt($(this).val()) < 10) {
+
+
+                            if (frameOneShotOne === 10) {
+
+                                frameTwoShotTwo = $(this).val();
+
+                                frameTwoShotTwo = parseInt(frameTwoShotTwo);
+
+                                $("#frameTwoShotTwo").text(frameTwoShotTwo);
+
+                                frameTwoShotTwoEntered = true;
+
+                                result = 10 + frameTwoShotOne + frameTwoShotTwo;
+
+                                $("#frameOneTotal").text(result);
+
+                                frameOneTotalEntered = true;
+
+                                result += frameTwoShotOne + frameTwoShotTwo;
+
+                                $("#frameTwoTotal").text(result);
+
+                                frameTwoTotalEntered = true;
+
+                            }
+
+                            else if (frameOneShotOne !== 10) {
+
+                                frameTwoShotTwo = $(this).val();
+
+                                frameTwoShotTwo = parseInt(frameTwoShotTwo);
+
+                                $("#frameTwoShotTwo").text(frameTwoShotTwo);
+
+                                frameTwoShotTwoEntered = true;
+
+                                result += frameTwoShotOne + frameTwoShotTwo;
+
+                                $("#frameTwoTotal").text(result);
+
+                                frameTwoTotalEntered = true;
+
+
+
+                            }
+                        }
+
+                        else if (frameTwoShotOneEntered === true && frameTwoEmpty === false && frameTwoShotTwoEntered === false && frameTwoShotOne + parseInt($(this).val()) === 10 && frameTwoShotOne < 10) {
+
+                            frameTwoShotTwo = $(this).val();
+
+                            frameTwoShotTwo = parseInt(frameTwoShotTwo);
+
+                            $("#frameTwoShotTwo").text("/");
+
+                            frameTwoShotTwoEntered = true;
+
+                            if (frameOneShotOne === 10) {
+
+                                result = 20;
+
+                                $("#frameOneTotal").text(result);
+
+                                frameOneTotalEntered = true;
+                            }
+
+
+                        }
+
+                        else if (frameThreeEmpty === true && frameThreeShotOneEntered === false && parseInt($(this).val()) < 10) {
+
+                            if (frameTwoTotalEntered === true && frameTwoShotOne + frameTwoShotTwo < 10) {
+
+
+                                frameThreeShotOne = $(this).val();
+
+                                frameThreeShotOne = parseInt(frameThreeShotOne);
+
+                                $("#frameThreeShotOne").text(frameThreeShotOne);
+
+                                frameThreeEmpty = false;
+
+                                frameThreeShotOneEntered = true;
+
+                            }
+
+                            else if (frameTwoTotalEntered === false && frameTwoShotOne + frameTwoShotTwo === 10 && frameTwoShotOne === 10 && frameOneShotOne !== 10) {
+
+                                frameThreeShotOne = $(this).val();
+
+                                frameThreeShotOne = parseInt(frameThreeShotOne);
+
+                                $("#frameThreeShotOne").text(frameThreeShotOne);
+
+                                frameThreeEmpty = false;
+
+                                frameThreeShotOneEntered = true;
+
+
+                            }
+
+                            else if (frameTwoTotalEntered === false && frameTwoShotOne + frameTwoShotTwo === 10 && frameTwoShotOne === 10 && frameOneShotOne === 10) {
+
+
+                                frameThreeShotOne = $(this).val();
+
+                                frameThreeShotOne = parseInt(frameThreeShotOne);
+
+                                $("#frameThreeShotOne").text(frameThreeShotOne);
+
+                                frameThreeEmpty = false;
+
+                                frameThreeShotOneEntered = true;
+
+                                result = 20 + frameThreeShotOne;
+
+                                $("#frameOneTotal").text(result);
+
+                                frameOneTotalEntered = true;
+
+
+                            }
+
+                            else if (frameTwoTotalEntered === false && frameTwoShotOne + frameTwoShotTwo === 10 && frameTwoShotOne !== 10) {
+
+                                frameThreeShotOne = $(this).val();
+
+                                frameThreeShotOne = parseInt(frameThreeShotOne);
+
+                                $("#frameThreeShotOne").text(frameThreeShotOne);
+
+                                frameThreeEmpty = false;
+
+                                frameThreeShotOneEntered = true;
+
+                                result += 10 + frameThreeShotOne;
+
+                                $("#frameTwoTotal").text(result);
+
+                                frameTwoTotalEntered = true;
+
+
+                            }
+
+                        }
+
+                        else if (frameThreeEmpty === true && frameThreeShotOneEntered === false && parseInt($(this).val()) === 10) {
+
+                            frameThreeShotOne = $(this).val();
+
+                            frameThreeShotOne = parseInt(frameThreeShotOne);
+
+                            $("#frameThreeShotOne").text("X");
+
+                            frameThreeShotOneEntered = true;
+
+                            if (frameTwoShotOne === 10 && frameOneShotOne === 10 && frameOneShotOne + frameOneShotTwo === 10) {
+
+                                result = 30;
+
+                                $("#frameOneTotal").text(result);
+
+                                frameOneTotalEntered = true;
+                            }
+
+                            else if (frameTwoShotOne !== 10 && frameOneShotOne !== 10 && frameTwoShotOne + frameTwoShotTwo === 10) {
+
+                                result += 10 + frameThreeShotOne;
+
+                                $("#frameTwoTotal").text(result);
+
+                                frameTwoTotalEntered = true;
+
+                            }
+
+
+
+                            else if (frameTwoShotOne !== 10 && frameOneShotOne === 10 && frameOneShotOne + frameOneShotTwo === 10 && frameTwoShotOne + frameTwoShotTwo === 10) {
+
+                                result += 10 + frameThreeShotOne;
+
+                                $("#frameTwoTotal").text(result);
+
+                                frameTwoTotalEntered = true;
+
+                            }
+
+
+
+                        }
+
+                        else if (frameThreeShotOneEntered === true && frameThreeEmpty === false && frameThreeShotTwoEntered === false && frameThreeShotOne + parseInt($(this).val()) === 10 && frameThreeShotOne < 10) {
+
+                            frameThreeShotTwo = $(this).val();
+
+                            frameThreeShotTwo = parseInt(frameThreeShotTwo);
+
+                            $("#frameThreeShotTwo").text("/");
+
+                            frameThreeShotTwoEntered = true;
+
+                            if (frameTwoShotOne === 10) {
+
+                                result += 20;
+
+                                $("#frameTwoTotal").text(result);
+
+                                frameTwoTotalEntered = true;
+                            }
+
+
+                        }
+
+                        else if (frameThreeShotOneEntered === true && frameThreeEmpty === false && frameTwoTotalEntered === false && frameThreeShotTwoEntered === false && frameThreeShotOne + parseInt($(this).val()) < 10) {
+
+                            frameThreeShotTwo = $(this).val();
+
+                            frameThreeShotTwo = parseInt(frameThreeShotTwo);
+
+                            $("#frameThreeShotTwo").text(frameThreeShotTwo);
+
+                            frameThreeShotTwoEntered = true;
+
+                            if (frameTwoShotOne === 10) {
+
+                                result += 10 + frameThreeShotOne + frameThreeShotTwo;
+
+                                $("#frameTwoTotal").text(result);
+
+                                frameTwoTotalEntered = true;
+
+                                result += frameThreeShotOne + frameThreeShotTwo;
+
+                                $("#frameThreeTotal").text(result);
+
+                                frameThreeTotalEntered = true;
+
+
+                            }
+
+
+
+
+
+                        }
+
+                        else if (frameThreeShotOneEntered === true && frameThreeEmpty === false && frameTwoTotalEntered === true && frameThreeShotTwoEntered === false && frameThreeShotOne + parseInt($(this).val()) < 10) {
+
+                            frameThreeShotTwo = $(this).val();
+
+                            frameThreeShotTwo = parseInt(frameThreeShotTwo);
+
+                            $("#frameThreeShotTwo").text(frameThreeShotTwo);
+
+                            frameThreeShotTwoEntered = true;
+
+                            result += frameThreeShotOne + frameThreeShotTwo;
+
+                            $("#frameThreeTotal").text(result);
+
+                            frameThreeTotalEntered = true;
+
+                        }
+
+                        else if (frameThreeEmpty === true && frameThreeShotOneEntered === false && parseInt($(this).val()) < 10) {
+
+                            if (frameTwoTotalEntered === true && frameTwoShotOne + frameTwoShotTwo < 10) {
+
+
+                                frameThreeShotOne = $(this).val();
+
+                                frameThreeShotOne = parseInt(frameThreeShotOne);
+
+                                $("#frameThreeShotOne").text(frameThreeShotOne);
+
+                                frameThreeEmpty = false;
+
+                                frameThreeShotOneEntered = true;
+
+                            }
+
+                            else if (frameTwoTotalEntered === false && frameTwoShotOne + frameTwoShotTwo === 10 && frameTwoShotOne === 10 && frameOneShotOne !== 10) {
+
+                                frameThreeShotOne = $(this).val();
+
+                                frameThreeShotOne = parseInt(frameThreeShotOne);
+
+                                $("#frameThreeShotOne").text(frameThreeShotOne);
+
+                                frameThreeEmpty = false;
+
+                                frameThreeShotOneEntered = true;
+
+
+                            }
+
+                            else if (frameTwoTotalEntered === false && frameTwoShotOne + frameTwoShotTwo === 10 && frameTwoShotOne === 10 && frameOneShotOne === 10) {
+
+
+                                frameThreeShotOne = $(this).val();
+
+                                frameThreeShotOne = parseInt(frameThreeShotOne);
+
+                                $("#frameThreeShotOne").text(frameThreeShotOne);
+
+                                frameThreeEmpty = false;
+
+                                frameThreeShotOneEntered = true;
+
+                                result = 20 + frameThreeShotOne;
+
+                                $("#frameOneTotal").text(result);
+
+                                frameOneTotalEntered = true;
+
+
+                            }
+
+                            else if (frameTwoTotalEntered === false && frameTwoShotOne + frameTwoShotTwo === 10 && frameTwoShotOne !== 10) {
+
+                                frameThreeShotOne = $(this).val();
+
+                                frameThreeShotOne = parseInt(frameThreeShotOne);
+
+                                $("#frameThreeShotOne").text(frameThreeShotOne);
+
+                                frameThreeEmpty = false;
+
+                                frameThreeShotOneEntered = true;
+
+                                result += 10 + frameThreeShotOne;
+
+                                $("#frameTwoTotal").text(result);
+
+                                frameTwoTotalEntered = true;
+
+
+                            }
+
+                        }
+
+                        else if (frameThreeEmpty === true && frameThreeShotOneEntered === false && parseInt($(this).val()) === 10) {
+
+                            frameThreeShotOne = $(this).val();
+
+                            frameThreeShotOne = parseInt(frameThreeShotOne);
+
+                            $("#frameThreeShotOne").text("X");
+
+                            frameThreeShotOneEntered = true;
+
+                            if (frameTwoShotOne === 10 && frameOneShotOne === 10 && frameOneShotOne + frameOneShotTwo === 10) {
+
+                                result = 30;
+
+                                $("#frameOneTotal").text(result);
+
+                                frameOneTotalEntered = true;
+                            }
+
+                            else if (frameTwoShotOne !== 10 && frameOneShotOne !== 10 && frameTwoShotOne + frameTwoShotTwo === 10) {
+
+                                result += 10 + frameThreeShotOne;
+
+                                $("#frameTwoTotal").text(result);
+
+                                frameTwoTotalEntered = true;
+
+                            }
+
+
+
+                            else if (frameTwoShotOne !== 10 && frameOneShotOne === 10 && frameOneShotOne + frameOneShotTwo === 10 && frameTwoShotOne + frameTwoShotTwo === 10) {
+
+                                result += 10 + frameThreeShotOne;
+
+                                $("#frameTwoTotal").text(result);
+
+                                frameTwoTotalEntered = true;
+
+                            }
+
+
+
+                        }
+
+                        else if (frameThreeShotOneEntered === true && frameThreeEmpty === false && frameThreeShotTwoEntered === false && frameThreeShotOne + parseInt($(this).val()) === 10 && frameThreeShotOne < 10) {
+
+                            frameThreeShotTwo = $(this).val();
+
+                            frameThreeShotTwo = parseInt(frameThreeShotTwo);
+
+                            $("#frameThreeShotTwo").text("/");
+
+                            frameThreeShotTwoEntered = true;
+
+                            if (frameTwoShotOne === 10) {
+
+                                result += 20;
+
+                                $("#frameTwoTotal").text(result);
+
+                                frameTwoTotalEntered = true;
+                            }
+
+
+                        }
+
+                        else if (frameThreeShotOneEntered === true && frameThreeEmpty === false && frameTwoTotalEntered === false && frameThreeShotTwoEntered === false && frameThreeShotOne + parseInt($(this).val()) < 10) {
+
+                            frameThreeShotTwo = $(this).val();
+
+                            frameThreeShotTwo = parseInt(frameThreeShotTwo);
+
+                            $("#frameThreeShotTwo").text(frameThreeShotTwo);
+
+                            frameThreeShotTwoEntered = true;
+
+                            if (frameTwoShotOne === 10) {
+
+                                result += 10 + frameThreeShotOne + frameThreeShotTwo;
+
+                                $("#frameTwoTotal").text(result);
+
+                                frameTwoTotalEntered = true;
+
+                                result += frameThreeShotOne + frameThreeShotTwo;
+
+                                $("#frameThreeTotal").text(result);
+
+                                frameThreeTotalEntered = true;
+
+
+                            }
+
+
+
+
+
+                        }
+
+                        else if (frameThreeShotOneEntered === true && frameThreeEmpty === false && frameTwoTotalEntered === true && frameThreeShotTwoEntered === false && frameThreeShotOne + parseInt($(this).val()) < 10) {
+
+                            frameThreeShotTwo = $(this).val();
+
+                            frameThreeShotTwo = parseInt(frameThreeShotTwo);
+
+                            $("#frameThreeShotTwo").text(frameThreeShotTwo);
+
+                            frameThreeShotTwoEntered = true;
+
+                            result += frameThreeShotOne + frameThreeShotTwo;
+
+                            $("#frameThreeTotal").text(result);
+
+                            frameThreeTotalEntered = true;
+
+                        }
+
+
+
+                        else if (frameFourEmpty === true && frameFourShotOneEntered === false && parseInt($(this).val()) < 10) {
+
+                            if (frameThreeTotalEntered === true && frameThreeShotOne + frameThreeShotTwo < 10) {
+
+
+                                frameFourShotOne = $(this).val();
+
+                                frameFourShotOne = parseInt(frameFourShotOne);
+
+                                $("#frameFourShotOne").text(frameFourShotOne);
+
+                                frameFourEmpty = false;
+
+                                frameFourShotOneEntered = true;
+
+                            }
+
+                            else if (frameThreeTotalEntered === false && frameThreeShotOne + frameThreeShotTwo === 10 && frameThreeShotOne === 10 && frameTwoShotOne !== 10) {
+
+                                frameFourShotOne = $(this).val();
+
+                                frameFourShotOne = parseInt(frameFourShotOne);
+
+                                $("#frameFourShotOne").text(frameFourShotOne);
+
+                                frameFourEmpty = false;
+
+                                frameFourShotOneEntered = true;
+
+
+                            }
+
+                            else if (frameThreeTotalEntered === false && frameThreeShotOne + frameThreeShotTwo === 10 && frameThreeShotOne === 10 && frameTwoShotOne === 10) {
+
+
+                                frameFourShotOne = $(this).val();
+
+                                frameFourShotOne = parseInt(frameFourShotOne);
+
+                                $("#frameFourShotOne").text(frameFourShotOne);
+
+                                frameFourEmpty = false;
+
+                                frameFourShotOneEntered = true;
+
+                                result += 20 + frameFourShotOne;
+
+                                $("#frameTwoTotal").text(result);
+
+                                frameTwoTotalEntered = true;
+
+
+                            }
+
+                            else if (frameThreeTotalEntered === false && frameThreeShotOne + frameThreeShotTwo === 10 && frameThreeShotOne !== 10) {
+
+                                frameFourShotOne = $(this).val();
+
+                                frameFourShotOne = parseInt(frameFourShotOne);
+
+                                $("#frameFourShotOne").text(frameFourShotOne);
+
+                                frameFourEmpty = false;
+
+                                frameFourShotOneEntered = true;
+
+                                result += 10 + frameFourShotOne;
+
+                                $("#frameThreeTotal").text(result);
+
+                                frameThreeTotalEntered = true;
+
+
+                            }
+
+                        }
+
+                        else if (frameFourEmpty === true && frameFourShotOneEntered === false && parseInt($(this).val()) === 10) {
+
+                            frameFourShotOne = $(this).val();
+
+                            frameFourShotOne = parseInt(frameFourShotOne);
+
+                            $("#frameFourShotOne").text("X");
+
+                            frameFourShotOneEntered = true;
+
+                            if (frameThreeShotOne === 10 && frameTwoShotOne === 10 && frameThreeShotOne + frameThreeShotTwo === 10) {
+
+                                result += 30;
+
+                                $("#frameTwoTotal").text(result);
+
+                                frameTwoTotalEntered = true;
+                            }
+
+                            else if (frameThreeShotOne !== 10 && frameTwoShotOne !== 10 && frameThreeShotOne + frameThreeShotTwo === 10) {
+
+                                result += 10 + frameFourShotOne;
+
+                                $("#frameThreeTotal").text(result);
+
+                                frameThreeTotalEntered = true;
+
+                            }
+
+
+
+                            else if (frameThreeShotOne !== 10 && frameTwoShotOne === 10 && frameTwoShotOne + frameTwoShotTwo === 10 && frameThreeShotOne + frameThreeShotTwo === 10) {
+
+                                result += 10 + frameFourShotOne;
+
+                                $("#frameThreeTotal").text(result);
+
+                                frameThreeTotalEntered = true;
+
+                            }
+
+
+
+                        }
+
+                        else if (frameFourShotOneEntered === true && frameFourEmpty === false && frameFourShotTwoEntered === false && frameFourShotOne + parseInt($(this).val()) === 10 && frameFourShotOne < 10) {
+
+                            frameFourShotTwo = $(this).val();
+
+                            frameFourShotTwo = parseInt(frameFourShotTwo);
+
+                            $("#frameFourShotTwo").text("/");
+
+                            frameFourShotTwoEntered = true;
+
+                            if (frameThreeShotOne === 10) {
+
+                                result += 20;
+
+                                $("#frameThreeTotal").text(result);
+
+                                frameThreeTotalEntered = true;
+                            }
+
+
+                        }
+
+                        else if (frameFourShotOneEntered === true && frameFourEmpty === false && frameThreeTotalEntered === false && frameFourShotTwoEntered === false && frameFourShotOne + parseInt($(this).val()) < 10) {
+
+                            frameFourShotTwo = $(this).val();
+
+                            frameFourShotTwo = parseInt(frameFourShotTwo);
+
+                            $("#frameFourShotTwo").text(frameFourShotTwo);
+
+                            frameFourShotTwoEntered = true;
+
+                            if (frameThreeShotOne === 10) {
+
+                                result += 10 + frameFourShotOne + frameFourShotTwo;
+
+                                $("#frameThreeTotal").text(result);
+
+                                frameThreeTotalEntered = true;
+
+                                result += frameFourShotOne + frameFourShotTwo;
+
+                                $("#frameFourTotal").text(result);
+
+                                frameFourTotalEntered = true;
+
+
+                            }
+
+
+
+
+
+                        }
+
+                        else if (frameFourShotOneEntered === true && frameFourEmpty === false && frameThreeTotalEntered === true && frameFourShotTwoEntered === false && frameFourShotOne + parseInt($(this).val()) < 10) {
+
+                            frameFourShotTwo = $(this).val();
+
+                            frameFourShotTwo = parseInt(frameFourShotTwo);
+
+                            $("#frameFourShotTwo").text(frameFourShotTwo);
+
+                            frameFourShotTwoEntered = true;
+
+                            result += frameFourShotOne + frameFourShotTwo;
+
+                            $("#frameFourTotal").text(result);
+
+                            frameFourTotalEntered = true;
+
+                        }
+
+
+
+
+                        else if (frameFiveEmpty === true && frameFiveShotOneEntered === false && parseInt($(this).val()) < 10) {
+
+                            if (frameFourTotalEntered === true && frameFourShotOne + frameFourShotTwo < 10) {
+
+
+                                frameFiveShotOne = $(this).val();
+
+                                frameFiveShotOne = parseInt(frameFiveShotOne);
+
+                                $("#frameFiveShotOne").text(frameFiveShotOne);
+
+                                frameFiveEmpty = false;
+
+                                frameFiveShotOneEntered = true;
+
+                            }
+
+                            else if (frameFourTotalEntered === false && frameFourShotOne + frameFourShotTwo === 10 && frameFourShotOne === 10 && frameThreeShotOne !== 10) {
+
+                                frameFiveShotOne = $(this).val();
+
+                                frameFiveShotOne = parseInt(frameFiveShotOne);
+
+                                $("#frameFiveShotOne").text(frameFiveShotOne);
+
+                                frameFiveEmpty = false;
+
+                                frameFiveShotOneEntered = true;
+
+
+                            }
+
+                            else if (frameFourTotalEntered === false && frameFourShotOne + frameFourShotTwo === 10 && frameFourShotOne === 10 && frameThreeShotOne === 10) {
+
+
+                                frameFiveShotOne = $(this).val();
+
+                                frameFiveShotOne = parseInt(frameFiveShotOne);
+
+                                $("#frameFiveShotOne").text(frameFiveShotOne);
+
+                                frameFiveEmpty = false;
+
+                                frameFiveShotOneEntered = true;
+
+                                result += 20 + frameFiveShotOne;
+
+                                $("#frameThreeTotal").text(result);
+
+                                frameThreeTotalEntered = true;
+
+
+                            }
+
+                            else if (frameFourTotalEntered === false && frameFourShotOne + frameFourShotTwo === 10 && frameFourShotOne !== 10) {
+
+                                frameFiveShotOne = $(this).val();
+
+                                frameFiveShotOne = parseInt(frameFiveShotOne);
+
+                                $("#frameFiveShotOne").text(frameFiveShotOne);
+
+                                frameFiveEmpty = false;
+
+                                frameFiveShotOneEntered = true;
+
+                                result += 10 + frameFiveShotOne;
+
+                                $("#frameFourTotal").text(result);
+
+                                frameFourTotalEntered = true;
+
+
+                            }
+
+                        }
+
+                        else if (frameFiveEmpty === true && frameFiveShotOneEntered === false && parseInt($(this).val()) === 10) {
+
+                            frameFiveShotOne = $(this).val();
+
+                            frameFiveShotOne = parseInt(frameFiveShotOne);
+
+                            $("#frameFiveShotOne").text("X");
+
+                            frameFiveShotOneEntered = true;
+
+                            if (frameFourShotOne === 10 && frameThreeShotOne === 10 && frameFourShotOne + frameFourShotTwo === 10) {
+
+                                result += 30;
+
+                                $("#frameThreeTotal").text(result);
+
+                                frameThreeTotalEntered = true;
+                            }
+
+                            else if (frameFourShotOne !== 10 && frameThreeShotOne !== 10 && frameFourShotOne + frameFourShotTwo === 10) {
+
+                                result += 10 + frameFiveShotOne;
+
+                                $("#frameFourTotal").text(result);
+
+                                frameFourTotalEntered = true;
+
+                            }
+
+
+
+                            else if (frameFourShotOne !== 10 && frameThreeShotOne === 10 && frameThreeShotOne + frameThreeShotTwo === 10 && frameFourShotOne + frameFourShotTwo === 10) {
+
+                                result += 10 + frameFiveShotOne;
+
+                                $("#frameFourTotal").text(result);
+
+                                frameFourTotalEntered = true;
+
+                            }
+
+
+
+                        }
+
+                        else if (frameFiveShotOneEntered === true && frameFiveEmpty === false && frameFiveShotTwoEntered === false && frameFiveShotOne + parseInt($(this).val()) === 10 && frameFiveShotOne < 10) {
+
+                            frameFiveShotTwo = $(this).val();
+
+                            frameFiveShotTwo = parseInt(frameFiveShotTwo);
+
+                            $("#frameFiveShotTwo").text("/");
+
+                            frameFiveShotTwoEntered = true;
+
+                            if (frameFourShotOne === 10) {
+
+                                result += 20;
+
+                                $("#frameFourTotal").text(result);
+
+                                frameFourTotalEntered = true;
+                            }
+
+
+                        }
+
+                        else if (frameFiveShotOneEntered === true && frameFiveEmpty === false && frameFourTotalEntered === false && frameFiveShotTwoEntered === false && frameFiveShotOne + parseInt($(this).val()) < 10) {
+
+                            frameFiveShotTwo = $(this).val();
+
+                            frameFiveShotTwo = parseInt(frameFiveShotTwo);
+
+                            $("#frameFiveShotTwo").text(frameFiveShotTwo);
+
+                            frameFiveShotTwoEntered = true;
+
+                            if (frameFourShotOne === 10) {
+
+                                result += 10 + frameFiveShotOne + frameFiveShotTwo;
+
+                                $("#frameFourTotal").text(result);
+
+                                frameFourTotalEntered = true;
+
+                                result += frameFiveShotOne + frameFiveShotTwo;
+
+                                $("#frameFiveTotal").text(result);
+
+                                frameFiveTotalEntered = true;
+
+
+                            }
+
+
+
+
+
+                        }
+
+                        else if (frameFiveShotOneEntered === true && frameFiveEmpty === false && frameFourTotalEntered === true && frameFiveShotTwoEntered === false && frameFiveShotOne + parseInt($(this).val()) < 10) {
+
+                            frameFiveShotTwo = $(this).val();
+
+                            frameFiveShotTwo = parseInt(frameFiveShotTwo);
+
+                            $("#frameFiveShotTwo").text(frameFiveShotTwo);
+
+                            frameFiveShotTwoEntered = true;
+
+                            result += frameFiveShotOne + frameFiveShotTwo;
+
+                            $("#frameFiveTotal").text(result);
+
+                            frameFiveTotalEntered = true;
+
+                        }
+
+
+
+
+                        else if (frameSixEmpty === true && frameSixShotOneEntered === false && parseInt($(this).val()) < 10) {
+
+                            if (frameFiveTotalEntered === true && frameFiveShotOne + frameFiveShotTwo < 10) {
+
+
+                                frameSixShotOne = $(this).val();
+
+                                frameSixShotOne = parseInt(frameSixShotOne);
+
+                                $("#frameSixShotOne").text(frameSixShotOne);
+
+                                frameSixEmpty = false;
+
+                                frameSixShotOneEntered = true;
+
+                            }
+
+                            else if (frameFiveTotalEntered === false && frameFiveShotOne + frameFiveShotTwo === 10 && frameFiveShotOne === 10 && frameFourShotOne !== 10) {
+
+                                frameSixShotOne = $(this).val();
+
+                                frameSixShotOne = parseInt(frameSixShotOne);
+
+                                $("#frameSixShotOne").text(frameSixShotOne);
+
+                                frameSixEmpty = false;
+
+                                frameSixShotOneEntered = true;
+
+
+                            }
+
+                            else if (frameFiveTotalEntered === false && frameFiveShotOne + frameFiveShotTwo === 10 && frameFiveShotOne === 10 && frameFourShotOne === 10) {
+
+
+                                frameSixShotOne = $(this).val();
+
+                                frameSixShotOne = parseInt(frameSixShotOne);
+
+                                $("#frameSixShotOne").text(frameSixShotOne);
+
+                                frameSixEmpty = false;
+
+                                frameSixShotOneEntered = true;
+
+                                result += 20 + frameSixShotOne;
+
+                                $("#frameFourTotal").text(result);
+
+                                frameFourTotalEntered = true;
+
+
+                            }
+
+                            else if (frameFiveTotalEntered === false && frameFiveShotOne + frameFiveShotTwo === 10 && frameFiveShotOne !== 10) {
+
+                                frameSixShotOne = $(this).val();
+
+                                frameSixShotOne = parseInt(frameSixShotOne);
+
+                                $("#frameSixShotOne").text(frameSixShotOne);
+
+                                frameSixEmpty = false;
+
+                                frameSixShotOneEntered = true;
+
+                                result += 10 + frameSixShotOne;
+
+                                $("#frameFiveTotal").text(result);
+
+                                frameFiveTotalEntered = true;
+
+
+                            }
+
+                        }
+
+                        else if (frameSixEmpty === true && frameSixShotOneEntered === false && parseInt($(this).val()) === 10) {
+
+                            frameSixShotOne = $(this).val();
+
+                            frameSixShotOne = parseInt(frameSixShotOne);
+
+                            $("#frameSixShotOne").text("X");
+
+                            frameSixShotOneEntered = true;
+
+                            if (frameFiveShotOne === 10 && frameFourShotOne === 10 && frameFiveShotOne + frameFiveShotTwo === 10) {
+
+                                result += 30;
+
+                                $("#frameFourTotal").text(result);
+
+                                frameFourTotalEntered = true;
+                            }
+
+                            else if (frameFiveShotOne !== 10 && frameFourShotOne !== 10 && frameFiveShotOne + frameFiveShotTwo === 10) {
+
+                                result += 10 + frameSixShotOne;
+
+                                $("#frameFiveTotal").text(result);
+
+                                frameFiveTotalEntered = true;
+
+                            }
+
+
+
+                            else if (frameFiveShotOne !== 10 && frameFourShotOne === 10 && frameFourShotOne + frameFourShotTwo === 10 && frameFiveShotOne + frameFiveShotTwo === 10) {
+
+                                result += 10 + frameSixShotOne;
+
+                                $("#frameFiveTotal").text(result);
+
+                                frameFiveTotalEntered = true;
+
+                            }
+
+
+
+                        }
+
+                        else if (frameSixShotOneEntered === true && frameSixEmpty === false && frameSixShotTwoEntered === false && frameSixShotOne + parseInt($(this).val()) === 10 && frameSixShotOne < 10) {
+
+                            frameSixShotTwo = $(this).val();
+
+                            frameSixShotTwo = parseInt(frameSixShotTwo);
+
+                            $("#frameSixShotTwo").text("/");
+
+                            frameSixShotTwoEntered = true;
+
+                            if (frameFiveShotOne === 10) {
+
+                                result += 20;
+
+                                $("#frameFiveTotal").text(result);
+
+                                frameFiveTotalEntered = true;
+                            }
+
+
+                        }
+
+                        else if (frameSixShotOneEntered === true && frameSixEmpty === false && frameFiveTotalEntered === false && frameSixShotTwoEntered === false && frameSixShotOne + parseInt($(this).val()) < 10) {
+
+                            frameSixShotTwo = $(this).val();
+
+                            frameSixShotTwo = parseInt(frameSixShotTwo);
+
+                            $("#frameSixShotTwo").text(frameSixShotTwo);
+
+                            frameSixShotTwoEntered = true;
+
+                            if (frameFiveShotOne === 10) {
+
+                                result += 10 + frameSixShotOne + frameSixShotTwo;
+
+                                $("#frameFiveTotal").text(result);
+
+                                frameFiveTotalEntered = true;
+
+                                result += frameSixShotOne + frameSixShotTwo;
+
+                                $("#frameSixTotal").text(result);
+
+                                frameSixTotalEntered = true;
+
+
+                            }
+
+
+
+
+
+                        }
+
+                        else if (frameSixShotOneEntered === true && frameSixEmpty === false && frameFiveTotalEntered === true && frameSixShotTwoEntered === false && frameSixShotOne + parseInt($(this).val()) < 10) {
+
+                            frameSixShotTwo = $(this).val();
+
+                            frameSixShotTwo = parseInt(frameSixShotTwo);
+
+                            $("#frameSixShotTwo").text(frameSixShotTwo);
+
+                            frameSixShotTwoEntered = true;
+
+                            result += frameSixShotOne + frameSixShotTwo;
+
+                            $("#frameSixTotal").text(result);
+
+                            frameSixTotalEntered = true;
+
+                        }
+
+
+
+
+                        else if (frameSevenEmpty === true && frameSevenShotOneEntered === false && parseInt($(this).val()) < 10) {
+
+                            if (frameSixTotalEntered === true && frameSixShotOne + frameSixShotTwo < 10) {
+
+
+                                frameSevenShotOne = $(this).val();
+
+                                frameSevenShotOne = parseInt(frameSevenShotOne);
+
+                                $("#frameSevenShotOne").text(frameSevenShotOne);
+
+                                frameSevenEmpty = false;
+
+                                frameSevenShotOneEntered = true;
+
+                            }
+
+                            else if (frameSixTotalEntered === false && frameSixShotOne + frameSixShotTwo === 10 && frameSixShotOne === 10 && frameFiveShotOne !== 10) {
+
+                                frameSevenShotOne = $(this).val();
+
+                                frameSevenShotOne = parseInt(frameSevenShotOne);
+
+                                $("#frameSevenShotOne").text(frameSevenShotOne);
+
+                                frameSevenEmpty = false;
+
+                                frameSevenShotOneEntered = true;
+
+
+                            }
+
+                            else if (frameSixTotalEntered === false && frameSixShotOne + frameSixShotTwo === 10 && frameSixShotOne === 10 && frameFiveShotOne === 10) {
+
+
+                                frameSevenShotOne = $(this).val();
+
+                                frameSevenShotOne = parseInt(frameSevenShotOne);
+
+                                $("#frameSevenShotOne").text(frameSevenShotOne);
+
+                                frameSevenEmpty = false;
+
+                                frameSevenShotOneEntered = true;
+
+                                result += 20 + frameSevenShotOne;
+
+                                $("#frameFiveTotal").text(result);
+
+                                frameFiveTotalEntered = true;
+
+
+                            }
+
+                            else if (frameSixTotalEntered === false && frameSixShotOne + frameSixShotTwo === 10 && frameSixShotOne !== 10) {
+
+                                frameSevenShotOne = $(this).val();
+
+                                frameSevenShotOne = parseInt(frameSevenShotOne);
+
+                                $("#frameSevenShotOne").text(frameSevenShotOne);
+
+                                frameSevenEmpty = false;
+
+                                frameSevenShotOneEntered = true;
+
+                                result += 10 + frameSevenShotOne;
+
+                                $("#frameSixTotal").text(result);
+
+                                frameSixTotalEntered = true;
+
+
+                            }
+
+                        }
+
+                        else if (frameSevenEmpty === true && frameSevenShotOneEntered === false && parseInt($(this).val()) === 10) {
+
+                            frameSevenShotOne = $(this).val();
+
+                            frameSevenShotOne = parseInt(frameSevenShotOne);
+
+                            $("#frameSevenShotOne").text("X");
+
+                            frameSevenShotOneEntered = true;
+
+                            if (frameSixShotOne === 10 && frameFiveShotOne === 10 && frameSixShotOne + frameSixShotTwo === 10) {
+
+                                result += 30;
+
+                                $("#frameFiveTotal").text(result);
+
+                                frameFiveTotalEntered = true;
+                            }
+
+                            else if (frameSixShotOne !== 10 && frameFiveShotOne !== 10 && frameSixShotOne + frameSixShotTwo === 10) {
+
+                                result += 10 + frameSevenShotOne;
+
+                                $("#frameSixTotal").text(result);
+
+                                frameSixTotalEntered = true;
+
+                            }
+
+
+
+                            else if (frameSixShotOne !== 10 && frameFiveShotOne === 10 && frameFiveShotOne + frameFiveShotTwo === 10 && frameSixShotOne + frameSixShotTwo === 10) {
+
+                                result += 10 + frameSevenShotOne;
+
+                                $("#frameSixTotal").text(result);
+
+                                frameSixTotalEntered = true;
+
+                            }
+
+
+
+                        }
+
+                        else if (frameSevenShotOneEntered === true && frameSevenEmpty === false && frameSevenShotTwoEntered === false && frameSevenShotOne + parseInt($(this).val()) === 10 && frameSevenShotOne < 10) {
+
+                            frameSevenShotTwo = $(this).val();
+
+                            frameSevenShotTwo = parseInt(frameSevenShotTwo);
+
+                            $("#frameSevenShotTwo").text("/");
+
+                            frameSevenShotTwoEntered = true;
+
+                            if (frameSixShotOne === 10) {
+
+                                result += 20;
+
+                                $("#frameSixTotal").text(result);
+
+                                frameSixTotalEntered = true;
+                            }
+
+
+                        }
+
+                        else if (frameSevenShotOneEntered === true && frameSevenEmpty === false && frameSixTotalEntered === false && frameSevenShotTwoEntered === false && frameSevenShotOne + parseInt($(this).val()) < 10) {
+
+                            frameSevenShotTwo = $(this).val();
+
+                            frameSevenShotTwo = parseInt(frameSevenShotTwo);
+
+                            $("#frameSevenShotTwo").text(frameSevenShotTwo);
+
+                            frameSevenShotTwoEntered = true;
+
+                            if (frameSixShotOne === 10) {
+
+                                result += 10 + frameSevenShotOne + frameSevenShotTwo;
+
+                                $("#frameSixTotal").text(result);
+
+                                frameSixTotalEntered = true;
+
+                                result += frameSevenShotOne + frameSevenShotTwo;
+
+                                $("#frameSevenTotal").text(result);
+
+                                frameSevenTotalEntered = true;
+
+
+                            }
+
+
+
+
+
+                        }
+
+                        else if (frameSevenShotOneEntered === true && frameSevenEmpty === false && frameSixTotalEntered === true && frameSevenShotTwoEntered === false && frameSevenShotOne + parseInt($(this).val()) < 10) {
+
+                            frameSevenShotTwo = $(this).val();
+
+                            frameSevenShotTwo = parseInt(frameSevenShotTwo);
+
+                            $("#frameSevenShotTwo").text(frameSevenShotTwo);
+
+                            frameSevenShotTwoEntered = true;
+
+                            result += frameSevenShotOne + frameSevenShotTwo;
+
+                            $("#frameSevenTotal").text(result);
+
+                            frameSevenTotalEntered = true;
+
+                        }
+
+
+
+
+                        else if (frameEightEmpty === true && frameEightShotOneEntered === false && parseInt($(this).val()) < 10) {
+
+                            if (frameSevenTotalEntered === true && frameSevenShotOne + frameSevenShotTwo < 10) {
+
+
+                                frameEightShotOne = $(this).val();
+
+                                frameEightShotOne = parseInt(frameEightShotOne);
+
+                                $("#frameEightShotOne").text(frameEightShotOne);
+
+                                frameEightEmpty = false;
+
+                                frameEightShotOneEntered = true;
+
+                            }
+
+                            else if (frameSevenTotalEntered === false && frameSevenShotOne + frameSevenShotTwo === 10 && frameSevenShotOne === 10 && frameSixShotOne !== 10) {
+
+                                frameEightShotOne = $(this).val();
+
+                                frameEightShotOne = parseInt(frameEightShotOne);
+
+                                $("#frameEightShotOne").text(frameEightShotOne);
+
+                                frameEightEmpty = false;
+
+                                frameEightShotOneEntered = true;
+
+
+                            }
+
+                            else if (frameSevenTotalEntered === false && frameSevenShotOne + frameSevenShotTwo === 10 && frameSevenShotOne === 10 && frameSixShotOne === 10) {
+
+
+                                frameEightShotOne = $(this).val();
+
+                                frameEightShotOne = parseInt(frameEightShotOne);
+
+                                $("#frameEightShotOne").text(frameEightShotOne);
+
+                                frameEightEmpty = false;
+
+                                frameEightShotOneEntered = true;
+
+                                result += 20 + frameEightShotOne;
+
+                                $("#frameSixTotal").text(result);
+
+                                frameSixTotalEntered = true;
+
+
+                            }
+
+                            else if (frameSevenTotalEntered === false && frameSevenShotOne + frameSevenShotTwo === 10 && frameSevenShotOne !== 10) {
+
+                                frameEightShotOne = $(this).val();
+
+                                frameEightShotOne = parseInt(frameEightShotOne);
+
+                                $("#frameEightShotOne").text(frameEightShotOne);
+
+                                frameEightEmpty = false;
+
+                                frameEightShotOneEntered = true;
+
+                                result += 10 + frameEightShotOne;
+
+                                $("#frameSevenTotal").text(result);
+
+                                frameSevenTotalEntered = true;
+
+
+                            }
+
+                        }
+
+                        else if (frameEightEmpty === true && frameEightShotOneEntered === false && parseInt($(this).val()) === 10) {
+
+                            frameEightShotOne = $(this).val();
+
+                            frameEightShotOne = parseInt(frameEightShotOne);
+
+                            $("#frameEightShotOne").text("X");
+
+                            frameEightShotOneEntered = true;
+
+                            if (frameSevenShotOne === 10 && frameSixShotOne === 10 && frameSevenShotOne + frameSevenShotTwo === 10) {
+
+                                result += 30;
+
+                                $("#frameSixTotal").text(result);
+
+                                frameSixTotalEntered = true;
+                            }
+
+                            else if (frameSevenShotOne !== 10 && frameSixShotOne !== 10 && frameSevenShotOne + frameSevenShotTwo === 10) {
+
+                                result += 10 + frameEightShotOne;
+
+                                $("#frameSevenTotal").text(result);
+
+                                frameSevenTotalEntered = true;
+
+                            }
+
+
+
+                            else if (frameSevenShotOne !== 10 && frameSixShotOne === 10 && frameSixShotOne + frameSixShotTwo === 10 && frameSevenShotOne + frameSevenShotTwo === 10) {
+
+                                result += 10 + frameEightShotOne;
+
+                                $("#frameSevenTotal").text(result);
+
+                                frameSevenTotalEntered = true;
+
+                            }
+
+
+
+                        }
+
+                        else if (frameEightShotOneEntered === true && frameEightEmpty === false && frameEightShotTwoEntered === false && frameEightShotOne + parseInt($(this).val()) === 10 && frameEightShotOne < 10) {
+
+                            frameEightShotTwo = $(this).val();
+
+                            frameEightShotTwo = parseInt(frameEightShotTwo);
+
+                            $("#frameEightShotTwo").text("/");
+
+                            frameEightShotTwoEntered = true;
+
+                            if (frameSevenShotOne === 10) {
+
+                                result += 20;
+
+                                $("#frameSevenTotal").text(result);
+
+                                frameSevenTotalEntered = true;
+                            }
+
+
+                        }
+
+                        else if (frameEightShotOneEntered === true && frameEightEmpty === false && frameSevenTotalEntered === false && frameEightShotTwoEntered === false && frameEightShotOne + parseInt($(this).val()) < 10) {
+
+                            frameEightShotTwo = $(this).val();
+
+                            frameEightShotTwo = parseInt(frameEightShotTwo);
+
+                            $("#frameEightShotTwo").text(frameEightShotTwo);
+
+                            frameEightShotTwoEntered = true;
+
+                            if (frameSevenShotOne === 10) {
+
+                                result += 10 + frameEightShotOne + frameEightShotTwo;
+
+                                $("#frameSevenTotal").text(result);
+
+                                frameSevenTotalEntered = true;
+
+                                result += frameEightShotOne + frameEightShotTwo;
+
+                                $("#frameEightTotal").text(result);
+
+                                frameEightTotalEntered = true;
+
+
+                            }
+
+
+
+
+
+                        }
+
+                        else if (frameEightShotOneEntered === true && frameEightEmpty === false && frameSevenTotalEntered === true && frameEightShotTwoEntered === false && frameEightShotOne + parseInt($(this).val()) < 10) {
+
+                            frameEightShotTwo = $(this).val();
+
+                            frameEightShotTwo = parseInt(frameEightShotTwo);
+
+                            $("#frameEightShotTwo").text(frameEightShotTwo);
+
+                            frameEightShotTwoEntered = true;
+
+                            result += frameEightShotOne + frameEightShotTwo;
+
+                            $("#frameEightTotal").text(result);
+
+                            frameEightTotalEntered = true;
+
+                        }
+
+
+
+
+                        else if (frameNineEmpty === true && frameNineShotOneEntered === false && parseInt($(this).val()) < 10) {
+
+                            if (frameEightTotalEntered === true && frameEightShotOne + frameEightShotTwo < 10) {
+
+
+                                frameNineShotOne = $(this).val();
+
+                                frameNineShotOne = parseInt(frameNineShotOne);
+
+                                $("#frameNineShotOne").text(frameNineShotOne);
+
+                                frameNineEmpty = false;
+
+                                frameNineShotOneEntered = true;
+
+                            }
+
+                            else if (frameEightTotalEntered === false && frameEightShotOne + frameEightShotTwo === 10 && frameEightShotOne === 10 && frameSevenShotOne !== 10) {
+
+                                frameNineShotOne = $(this).val();
+
+                                frameNineShotOne = parseInt(frameNineShotOne);
+
+                                $("#frameNineShotOne").text(frameNineShotOne);
+
+                                frameNineEmpty = false;
+
+                                frameNineShotOneEntered = true;
+
+
+                            }
+
+                            else if (frameEightTotalEntered === false && frameEightShotOne + frameEightShotTwo === 10 && frameEightShotOne === 10 && frameSevenShotOne === 10) {
+
+
+                                frameNineShotOne = $(this).val();
+
+                                frameNineShotOne = parseInt(frameNineShotOne);
+
+                                $("#frameNineShotOne").text(frameNineShotOne);
+
+                                frameNineEmpty = false;
+
+                                frameNineShotOneEntered = true;
+
+                                result += 20 + frameNineShotOne;
+
+                                $("#frameSevenTotal").text(result);
+
+                                frameSevenTotalEntered = true;
+
+
+                            }
+
+                            else if (frameEightTotalEntered === false && frameEightShotOne + frameEightShotTwo === 10 && frameEightShotOne !== 10) {
+
+                                frameNineShotOne = $(this).val();
+
+                                frameNineShotOne = parseInt(frameNineShotOne);
+
+                                $("#frameNineShotOne").text(frameNineShotOne);
+
+                                frameNineEmpty = false;
+
+                                frameNineShotOneEntered = true;
+
+                                result += 10 + frameNineShotOne;
+
+                                $("#frameEightTotal").text(result);
+
+                                frameEightTotalEntered = true;
+
+
+                            }
+
+                        }
+
+                        else if (frameNineEmpty === true && frameNineShotOneEntered === false && parseInt($(this).val()) === 10) {
+
+                            frameNineShotOne = $(this).val();
+
+                            frameNineShotOne = parseInt(frameNineShotOne);
+
+                            $("#frameNineShotOne").text("X");
+
+                            frameNineShotOneEntered = true;
+
+                            if (frameEightShotOne === 10 && frameSevenShotOne === 10 && frameEightShotOne + frameEightShotTwo === 10) {
+
+                                result += 30;
+
+                                $("#frameSevenTotal").text(result);
+
+                                frameSevenTotalEntered = true;
+                            }
+
+                            else if (frameEightShotOne !== 10 && frameSevenShotOne !== 10 && frameEightShotOne + frameEightShotTwo === 10) {
+
+                                result += 10 + frameNineShotOne;
+
+                                $("#frameEightTotal").text(result);
+
+                                frameEightTotalEntered = true;
+
+                            }
+
+
+
+                            else if (frameEightShotOne !== 10 && frameSevenShotOne === 10 && frameSevenShotOne + frameSevenShotTwo === 10 && frameEightShotOne + frameEightShotTwo === 10) {
+
+                                result += 10 + frameNineShotOne;
+
+                                $("#frameEightTotal").text(result);
+
+                                frameEightTotalEntered = true;
+
+                            }
+
+
+
+                        }
+
+                        else if (frameNineShotOneEntered === true && frameNineEmpty === false && frameNineShotTwoEntered === false && frameNineShotOne + parseInt($(this).val()) === 10 && frameNineShotOne < 10) {
+
+                            frameNineShotTwo = $(this).val();
+
+                            frameNineShotTwo = parseInt(frameNineShotTwo);
+
+                            $("#frameNineShotTwo").text("/");
+
+                            frameNineShotTwoEntered = true;
+
+                            if (frameEightShotOne === 10) {
+
+                                result += 20;
+
+                                $("#frameEightTotal").text(result);
+
+                                frameEightTotalEntered = true;
+                            }
+
+
+                        }
+
+                        else if (frameNineShotOneEntered === true && frameNineEmpty === false && frameEightTotalEntered === false && frameNineShotTwoEntered === false && frameNineShotOne + parseInt($(this).val()) < 10) {
+
+                            frameNineShotTwo = $(this).val();
+
+                            frameNineShotTwo = parseInt(frameNineShotTwo);
+
+                            $("#frameNineShotTwo").text(frameNineShotTwo);
+
+                            frameNineShotTwoEntered = true;
+
+                            if (frameEightShotOne === 10) {
+
+                                result += 10 + frameNineShotOne + frameNineShotTwo;
+
+                                $("#frameEightTotal").text(result);
+
+                                frameEightTotalEntered = true;
+
+                                result += frameNineShotOne + frameNineShotTwo;
+
+                                $("#frameNineTotal").text(result);
+
+                                frameNineTotalEntered = true;
+
+
+                            }
+
+
+
+
+
+                        }
+
+                        else if (frameNineShotOneEntered === true && frameNineEmpty === false && frameEightTotalEntered === true && frameNineShotTwoEntered === false && frameNineShotOne + parseInt($(this).val()) < 10) {
+
+                            frameNineShotTwo = $(this).val();
+
+                            frameNineShotTwo = parseInt(frameNineShotTwo);
+
+                            $("#frameNineShotTwo").text(frameNineShotTwo);
+
+                            frameNineShotTwoEntered = true;
+
+                            result += frameNineShotOne + frameNineShotTwo;
+
+                            $("#frameNineTotal").text(result);
+
+                            frameNineTotalEntered = true;
+
+                        }
+
+
+
+
+                        else if (frameTenEmpty === true && frameTenShotOneEntered === false && parseInt($(this).val()) < 10) {
+
+                            if (frameNineTotalEntered === true && frameNineShotOne + frameNineShotTwo < 10) {
+
+
+                                frameTenShotOne = $(this).val();
+
+                                frameTenShotOne = parseInt(frameTenShotOne);
+
+                                $("#frameTenShotOne").text(frameTenShotOne);
+
+                                frameTenEmpty = false;
+
+                                frameTenShotOneEntered = true;
+
+                            }
+
+                            else if (frameNineTotalEntered === false && frameNineShotOne + frameNineShotTwo === 10 && frameNineShotOne === 10 && frameEightShotOne !== 10) {
+
+                                frameTenShotOne = $(this).val();
+
+                                frameTenShotOne = parseInt(frameTenShotOne);
+
+                                $("#frameTenShotOne").text(frameTenShotOne);
+
+                                frameTenEmpty = false;
+
+                                frameTenShotOneEntered = true;
+
+
+                            }
+
+                            else if (frameNineTotalEntered === false && frameNineShotOne + frameNineShotTwo === 10 && frameNineShotOne === 10 && frameEightShotOne === 10) {
+
+
+                                frameTenShotOne = $(this).val();
+
+                                frameTenShotOne = parseInt(frameTenShotOne);
+
+                                $("#frameTenShotOne").text(frameTenShotOne);
+
+                                frameTenEmpty = false;
+
+                                frameTenShotOneEntered = true;
+
+                                result += 20 + frameTenShotOne;
+
+                                $("#frameEightTotal").text(result);
+
+                                frameEightTotalEntered = true;
+
+
+                            }
+
+                            else if (frameNineTotalEntered === false && frameNineShotOne + frameNineShotTwo === 10 && frameNineShotOne !== 10) {
+
+                                frameTenShotOne = $(this).val();
+
+                                frameTenShotOne = parseInt(frameTenShotOne);
+
+                                $("#frameTenShotOne").text(frameTenShotOne);
+
+                                frameTenEmpty = false;
+
+                                frameTenShotOneEntered = true;
+
+                                result += 10 + frameTenShotOne;
+
+                                $("#frameNineTotal").text(result);
+
+                                frameNineTotalEntered = true;
+
+
+                            }
+
+                        }
+
+                        else if (frameTenEmpty === true && frameTenShotOneEntered === false && parseInt($(this).val()) === 10) {
+
+                            frameTenShotOne = $(this).val();
+
+                            frameTenShotOne = parseInt(frameTenShotOne);
+
+                            $("#frameTenShotOne").text("X");
+
+                            frameTenEmpty = false;
+
+                            frameTenShotOneEntered = true;
+
+                            if (frameNineShotOne === 10 && frameEightShotOne === 10 && frameNineShotOne + frameNineShotTwo === 10) {
+
+                                result += 30;
+
+                                $("#frameEightTotal").text(result);
+
+                                frameEightTotalEntered = true;
+                            }
+
+                            else if (frameNineShotOne !== 10 && frameEightShotOne !== 10 && frameNineShotOne + frameNineShotTwo === 10) {
+
+                                result += 10 + frameTenShotOne;
+
+                                $("#frameNineTotal").text(result);
+
+                                frameNineTotalEntered = true;
+
+                            }
+
+
+
+                            else if (frameNineShotOne !== 10 && frameEightShotOne === 10 && frameEightShotOne + frameEightShotTwo === 10 && frameNineShotOne + frameNineShotTwo === 10) {
+
+                                result += 10 + frameTenShotOne;
+
+                                $("#frameNineTotal").text(result);
+
+                                frameNineTotalEntered = true;
+
+                            }
+
+
+
+                        }
+
+                        else if (frameTenEmpty === false && frameTenShotOneEntered === true && parseInt($(this).val()) === 10 && frameTenShotTwoEntered === false && frameTenShotOne === 10) {
+
+                            frameTenShotTwo = $(this).val();
+
+                            frameTenShotTwo = parseInt(frameTenShotTwo);
+
+                            $("#frameTenShotTwo").text("X");
+
+                            frameTenShotTwoEntered = true;
+
+                            if (frameNineShotOne === 10 && frameNineShotOne + frameNineShotTwo === 10 && frameTenShotOne === 10) {
+
+                                result += 30;
+
+                                $("#frameNineTotal").text(result);
+
+                                frameNineTotalEntered = true;
+                            }
+
+                        }
+
+                        
+
+
+
+                        else if (frameTenShotOneEntered === true && frameTenEmpty === false && frameTenShotTwoEntered === false && frameTenShotOne + parseInt($(this).val()) === 10 && frameTenShotOne < 10) {
+
+                            frameTenShotTwo = $(this).val();
+
+                            frameTenShotTwo = parseInt(frameTenShotTwo);
+
+                            $("#frameTenShotTwo").text("/");
+
+                            frameTenShotTwoEntered = true;
+
+                            if (frameNineShotOne === 10) {
+
+                                result += 20;
+
+                                $("#frameNineTotal").text(result);
+
+                                frameNineTotalEntered = true;
+                            }
+
+
+                        }
+
+                        else if (frameTenShotOneEntered === true && frameTenEmpty === false && frameNineTotalEntered === false && frameTenShotTwoEntered === false && frameTenShotOne + parseInt($(this).val()) < 10) {
+
+                            frameTenShotTwo = $(this).val();
+
+                            frameTenShotTwo = parseInt(frameTenShotTwo);
+
+                            $("#frameTenShotTwo").text(frameTenShotTwo);
+
+                            frameTenShotTwoEntered = true;
+
+                            if (frameNineShotOne === 10) {
+
+                                result += 10 + frameTenShotOne + frameTenShotTwo;
+
+                                $("#frameNineTotal").text(result);
+
+                                frameNineTotalEntered = true;
+
+                                result += frameTenShotOne + frameTenShotTwo;
+
+                                $("#frameTenTotal").text(result);
+
+                                frameTenTotalEntered = true;
+
+                                $("#gameTotal").text(result);
+
+                            }
+
+                        }
+
+                        else if (frameTenShotOneEntered === true && frameTenEmpty === false && frameNineTotalEntered === true && frameTenShotTwoEntered === false && frameTenShotOne + parseInt($(this).val()) < 10) {
+
+                            frameTenShotTwo = $(this).val();
+
+                            frameTenShotTwo = parseInt(frameTenShotTwo);
+
+                            $("#frameTenShotTwo").text(frameTenShotTwo);
+
+                            frameTenShotTwoEntered = true;
+
+                            result += frameTenShotOne + frameTenShotTwo;
+
+                            $("#frameTenTotal").text(result);
+
+                            frameTenTotalEntered = true;
+
+                            $("#gameTotal").text(result);
+
+                        }
+
+                        else if (frameTenShotOneEntered === true && frameTenEmpty === false && frameNineTotalEntered === true && frameTenShotTwoEntered === false && frameTenShotOne + parseInt($(this).val()) > 10 && frameTenShotOne === 10) {
+
+                            frameTenShotTwo = $(this).val();
+
+                            frameTenShotTwo = parseInt(frameTenShotTwo);
+
+                            $("#frameTenShotTwo").text(frameTenShotTwo);
+
+                            frameTenShotTwoEntered = true;
+
+
+                        }
+
+                        else if (frameTenShotOneEntered === true && frameTenEmpty === false && frameTenShotTwoEntered === true) {
+
+
+                            if (frameTenShotOne === 10 || frameTenShotOne + frameTenShotTwo === 10) {
+
+                                frameTenShotThree = $(this).val();
+
+                                frameTenShotThree = parseInt(frameTenShotThree);
+
+                                if (frameTenShotThree === 10) {
+
+
+                                    $("#frameTenShotThree").text("X");
+
+                                } else {
+
+                                $("#frameTenShotThree").text(frameTenShotThree);
+
+                                }
+
+                                result += frameTenShotOne + frameTenShotTwo + frameTenShotThree;
+
+                                $("#frameTenTotal").text(result);
+
+                                frameTenTotalEntered = true;
+
+                                $("#gameTotal").text(result);
+
+
+                            }
+
+                        }
+
+
+
+
+
+                    });
+
+                });
+
+            </script>
+
+</body>
+
+</html>
